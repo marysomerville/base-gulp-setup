@@ -1,0 +1,36 @@
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Sass
+.sass-cache
+.sass-cache/
+*.scssc
+*.map
+
+# Node
+node_modules/
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
