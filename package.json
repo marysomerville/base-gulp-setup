@@ -1,0 +1,21 @@
+{
+  "name": "base-gulp-setup",
+  "version": "1.0.0",
+  "description": "A bare gulp setup for a website project",
+  "author": "Mary Somerville <mary@marysomerville.co.uk> (http://marysomerville.co.uk)",
+  "devDependencies": {
+    "gulp": "~3.9.x",
+    "gulp-autoprefixer": "~3.1.x",
+    "gulp-cache": "~0.4.x",
+    "gulp-clean-css": "~3.0.x",
+    "gulp-concat": "~2.6.x",
+    "gulp-imagemin": "~3.1.x",
+    "gulp-jshint": "~2.0.x",
+    "gulp-plumber": "~1.1.x",
+    "gulp-rename": "~1.2.x",
+    "gulp-sass": "~3.1.x",
+    "gulp-sourcemaps": "~2.4.x",
+    "gulp-uglify": "~2.0.x",
+    "jshint": "~2.9.x"
+  }
+}

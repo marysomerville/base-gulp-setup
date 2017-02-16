@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Helpers
+   ========================================================================== */
+
+/*
+ * Variables
+ */
+$primaryTextColor: '';
+$secondaryTextColor: '';
+$thirdTextColor: '';
+
+$primaryBgColor: '';
+$secondaryBgColor: '';
+$thirdBgColor: '';
+
+$primaryBorderColor: '';
+$secondaryBorderColor: '';
+$thirdBorderColor: '';
+
+$primaryCtaColor: '';
+$secondaryCtaColor: '';
+
+$primaryBodyFonts: Arial, Helvetica, sans-serif;
+$primaryHeadingFonts: "adelle-condensed",sans-serif;
+
+$errorColor: #aa0000;
+$errorColorLight: #ffa5a5;
+
+$containerPadding: 20px;
+
+/*
+ * Functions
+ */
+@function convert($target, $context: 16, $unit: em) {
+	@if $unit == "em" {
+		@return ($target / $context) * 1em;
+	} @else if $unit == "rem" {
+		@return ($target / $context) * 1rem;
+	} @else if $unit == "%" {
+		@return percentage($target / $context);
+	}
+}
+
+
+/*
+ * Mixins
+ */
+@import "_mixins/box-model";
+@import "_mixins/typography";
+@import "_mixins/lists";
+@import "_mixins/shapes";

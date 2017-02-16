@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+fieldset {
+    margin: 0;
+    border: none;
+    padding: 10px 0;
+}
+
+input, textarea, button {
+    font-size: 16px;
+    outline: 0;
+    margin: 0;
+    padding: 14px 20px;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 100%;
+}
+button, .button {
+    text-transform: uppercase;
+    font-family: $primaryBodyFonts;
+    letter-spacing: 1.5px;
+    font-size: 14px;
+    padding: 17px 0px 14px;
+    text-align: center;
+}
+
+input.error, textarea.error, .dk_toggle.error {
+	border: 1px solid $errorColor !important;
+}
+
+.error_msg {
+    color: $errorColor;
+}
+
+::placeholder {
+	color: #fff;
+}
+
+/* style the chrome auto filled in boxes (feel free to delete)  */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+    color: rgba(255,255,255,1) !important;
+    -webkit-text-fill-color: #000;
+}
