@@ -11,8 +11,12 @@ var cache 		= require('gulp-cache');
 var sourcemaps 	= require('gulp-sourcemaps');
 var plumber 	= require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
 
-//style paths
+//////////////////////////////
+// CSS tasks
+//////////////////////////////
 var sassFiles = 'assets/css/**/*.scss',  
     cssDest = 'assets/css/';
 
@@ -26,10 +30,13 @@ gulp.task('styles', function(){
         	.pipe(rename({ suffix: ".min" }))
     		.pipe(cleanCSS())
         	.pipe(sourcemaps.write())
-        .pipe(gulp.dest(cssDest));
+        .pipe(gulp.dest(cssDest))
+        .pipe(reload({stream:true}));
 });
 
-//script paths
+//////////////////////////////
+// JavaScript tasks
+//////////////////////////////
 var jsFiles = 'assets/js/src/*.js',  
     jsDest = 'assets/js';
 
@@ -57,14 +64,18 @@ gulp.task('plugin-scripts', function(){
         .pipe(gulp.dest(jsPluginDest));
 });
 
-//JavaScript hints
+//////////////////////////////
+// JS hint tasks
+//////////////////////////////
 gulp.task('jshint', function() {
   gulp.src('./src/scripts/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
 
-//Image optimisation
+//////////////////////////////
+// Image optimisation tasks
+//////////////////////////////
 var imageFiles = 'assets/images/site/**/*.+(png|jpg|gif|svg)',  
     imageDest = 'assets/images/dist';
 
@@ -74,13 +85,37 @@ gulp.task('images', function(){
 	.pipe(gulp.dest(imageDest))
 });
 
-//Watch tasks
+//////////////////////////////
+// HTML tasks
+//////////////////////////////
+var htmlFiles = '*.html';
+gulp.task('html', function() {
+    gulp.src(htmlFiles);
+});
+
+//////////////////////////////
+// Browser sync tasks
+//////////////////////////////
+gulp.task('browser-sync', function() {
+    browserSync({
+        server:{
+            baseDir: "."
+        }
+    })
+});
+
+//////////////////////////////
+// Watch tasks
+//////////////////////////////
 gulp.task('watch',function() {  
     gulp.watch(sassFiles,['styles']);
     gulp.watch(jsFiles,['jshint', 'scripts']);
     gulp.watch(jsPluginFiles,['plugin-scripts']);
     gulp.watch(imageFiles,['images']);
+    gulp.watch(htmlFiles,['html']);
 });
 
-// Default task: runs tasks immediately and continues watching for changes
-gulp.task('default', ['jshint', 'scripts', 'plugin-scripts', 'styles', 'images', 'watch']);
+//////////////////////////////
+// Default tasks: runs tasks immediately and continues watching for changes
+//////////////////////////////
+gulp.task('default', ['jshint', 'scripts', 'plugin-scripts', 'styles', 'images', 'html', 'browser-sync', 'watch']);
