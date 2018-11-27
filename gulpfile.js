@@ -12,6 +12,7 @@ var sourcemaps 	= require('gulp-sourcemaps');
 var plumber 	= require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync');
+var notify = require('gulp-notify');
 var reload = browserSync.reload;
 
 //////////////////////////////
@@ -31,6 +32,9 @@ gulp.task('styles', function(){
     		.pipe(cleanCSS())
         	.pipe(sourcemaps.write())
         .pipe(gulp.dest(cssDest))
+        .pipe(notify(function (file) {
+			return 'Styles: ' + file.relative + ' generated.';
+		}))
         .pipe(reload({stream:true}));
 });
 
@@ -49,7 +53,10 @@ gulp.task('scripts', function() {
         	.pipe(rename({suffix: '.min'}))
         	.pipe(uglify())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(jsDest));
+        .pipe(gulp.dest(jsDest))
+        .pipe(notify(function (file) {
+			return 'Scripts: ' + file.relative + ' generated.';
+		}));
 });
 
 var jsPluginFiles = 'assets/js/plugins/*.js',  
